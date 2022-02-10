@@ -19,7 +19,9 @@ app.post("/resources", formParser, (request, response) => {
 });
 
 app.get("/add-cookie", (request, response) => {
-  const favoriteTheme = request.body;
+  const favoriteTheme = post("/resources");
+    // request.body contains an object with our named fields
+  });
 
   response.set(
     "Set-Cookie",
@@ -27,7 +29,7 @@ app.get("/add-cookie", (request, response) => {
       maxAge: 3600, // This is the time (in seconds) that this cookie will be stored
     }),
   );
-
+  console.log(favoriteTheme);
   response.send("The cookie has been set");
 });
 
